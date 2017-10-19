@@ -17,7 +17,9 @@
   },
   "homepage": "https://github.com/PhilipK2/Bamazon#readme",
   "dependencies": {
+    "inquirer": "^3.3.0",
     "mysql": "^2.15.0",
+    "prompt": "^1.0.0",
     "requirer": "0.0.4"
   }
 }
