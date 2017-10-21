@@ -24,12 +24,12 @@ function displayInventory() {
         inquirer.prompt([{
                 type: "input",
                 name: "id",
-                message: "Which item would you like to purchase (enter Item ID)?"
+                message: "\nWhich item would you like to purchase (enter Item ID)?"
             },
             {
                 type: "input",
                 name: "quantity",
-                message: "How many of this item would do you want?"
+                message: "\nHow many of this item would do you want?"
             }
         ]).then(function(order) {
             var quantity = order.quantity;
@@ -37,9 +37,11 @@ function displayInventory() {
             connection.query('SELECT * FROM products WHERE item_id =' + itemId, function(err, selected) {
                 if (err) throw err;
                 if (selected[0].stock_quantity - quantity >= 0) {
-                    console.log("We have enough of that item!");
-                    console.log("You will be charged $" + (quantity * selected[0].price));
-                    console.log("thanks for shopping with us!");
+                    console.log("\n===================================================");
+                    console.log("\nWe have enough of that item!");
+                    console.log("\nYou will be charged $" + (quantity * selected[0].price));
+                    console.log("\nhanks for shopping with us!");
+                    console.log("\n===================================================");
 
                     connection.query('UPDATE products SET stock_quantity=? WHERE item_id=?', [selected[0].stock_quantity - quantity, itemId],
                         function(err, res) {
@@ -65,7 +67,9 @@ function displayInventory() {
                         });
                 } else {
                     displayInventory();
-                    console.log("We do not have enough of that item, we have " + (selected[0].stock_quantity) + " available");
+                    console.log("\n===================================================");
+                    console.log("\nWe do not have enough of that item, we have " + (selected[0].stock_quantity) + " available");
+                    console.log("\n===================================================");
                 }
             });
         });
