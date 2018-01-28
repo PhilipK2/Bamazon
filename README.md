@@ -1,6 +1,6 @@
 # Bamazon
 
-Node application creating an Amazon-like storefront with the MySQL. 
+Node application creating an Amazon-like storefront with MySQL. 
 
 The application has two viewing modes.
 
